@@ -20,14 +20,14 @@
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
-
+use ieee.numeric_std.all;
 
 -------------------------------------------------------------------------------
 entity led_blink is
 
   port (
     CLK:        in        std_logic;
-    o_LED:      out       std_logic;
+    o_LED:      out       std_logic
     );
 
 end entity led_blink;
