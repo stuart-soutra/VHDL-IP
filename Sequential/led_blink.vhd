@@ -52,7 +52,7 @@ begin
       end if;
   end process;
 
-  led <= led_reg;    
+  o_LED <= led_reg;    
           
 
 end architecture str;
