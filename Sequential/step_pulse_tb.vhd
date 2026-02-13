@@ -24,10 +24,10 @@ architecture sim of step_pulse_tb is
 
     uut : step_pulse
       port map(
-        CLK -> clk_tb,
-        i_TRIGGER -> trigger_tb,
-        o_STEP_OUT -> step_tb,
-        o_BUSY -> busy_tb
+        CLK => clk_tb,
+        i_TRIGGER => trigger_tb,
+        o_STEP_OUT => step_tb,
+        o_BUSY => busy_tb
         );
 
     --100 MHz clock
