@@ -18,12 +18,18 @@
 -- Date        Version  Author  Description
 -- 2026-02-14  1.0      AMD_2700X	Created
 -------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+
+-------------------------------------------------------------------------------
 entity step_pulse_gen is
   port(
     CLK:        in      std_logic;
     i_RST:      in      std_logic;
     i_TRIGGER:  in      std_logic;
-    o_STEP:     in      std_logic
+    o_STEP:     out     std_logic
   );
 end step_pulse_gen;
 
