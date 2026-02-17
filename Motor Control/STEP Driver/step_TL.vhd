@@ -6,7 +6,7 @@
 -- Author     :   <AMD_2700X@DESKTOP-J833AIB>
 -- Company    : Soutra Electronics
 -- Created    : 2026-02-14
--- Last update: 2026-02-16
+-- Last update: 2026-02-17
 -- Platform   : 
 -- Standard   : VHDL'08
 -------------------------------------------------------------------------------
@@ -37,11 +37,14 @@ end step_tl;
 -------------------------------------------------------------------------------
 architecture Behavioural of step_tl is
 
-  signal w_trigger : std_logic;
+  signal w_en : std_logic;
   signal w_step_period : integer := 10000;
 
 begin
 
+  --Enable (SW3 = enable)
+  w_en <= SW(3);
+  
   --Speed selection process
   process(SW)
     begin
@@ -55,22 +58,17 @@ begin
       end case;
     end process;
 
-  --Direction control
-  DIR <= SW(3);
+  
     
-  interval_inst : entity work.step_interval_gen
+  --Instantiate stepper core
+  core_inst : entity work.stepper_core
     port map(
       CLK => CLK_100MHZ,
       i_RST => RST,
+      i_EN => w_en,
+      i_DIR => '0',     --fixed for now
       i_STEP_PERIOD => w_step_period,
-      o_TRIGGER => w_trigger
-    );
-
-  pulse_inst : entity work.step_pulse_gen
-    port map(
-      CLK => CLK_100MHZ,
-      i_RST => RST,
-      i_TRIGGER => w_trigger,
-      o_STEP => STEP
+      o_STEP => STEP,
+      o_DIR => DIR
     );
 end Behavioural;
