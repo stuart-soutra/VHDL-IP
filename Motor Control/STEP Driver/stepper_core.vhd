@@ -99,7 +99,8 @@ begin
     port map(
       CLK => CLK,
       i_RST => i_RST,
-      i_STEP_PERIOD => w_period,
+      i_STEP_PERIOD => i_STEP_PERIOD,         --Actual connection
+      --i_STEP_PERIOD => 10000000,                --TEST connection (slower so visible on scope)
       o_TRIGGER => w_trigger,
       o_PERIOD_DONE => w_period_done
     );
